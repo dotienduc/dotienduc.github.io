@@ -73,10 +73,3 @@ Route::prefix('admin')->group(function(){
 Auth::routes();
 
 use App\Customer;
-use Illuminate\Support\Facades\DB;
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('test', function(){
-	 $product = DB::table('customer')->select(DB::raw('count(*) as Tong'), DB::raw("MONTH(created_at) as month"))
-	 			->groupBy(DB::raw("MONTH(created_at)"))->get();
-    dd($product);
-});
